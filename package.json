@@ -1,0 +1,40 @@
+{
+  "name": "kgd-v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "homepage": "https://bitbucket.org/pasqualevitiello/kgd#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist/{css/*,js/*,images/*}",
+    "imagemin": "imagemin src/images/* -o dist/images",
+    "serve": "browser-sync start --server --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
+    "build:css": "run-s lint-scss scss autoprefixer",
+    "build:js": "run-s lint uglify",
+    "build:images": "run-s imagemin",
+    "build": "run-s build:*",
+    "watch:css": "onchange \"src/scss\" -- run-s build:css",
+    "watch:js": "onchange \"src/js\" -- run-s build:js",
+    "watch:images": "onchange \"src/images\" -- run-s build:images",
+    "watch": "run-p serve watch:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.27.5",
+    "hint": "^7.1.5",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0"
+  },
+  "dependencies": {
+    "gifsicle": "^3.0.4",
+    "jpegtran-bin": "^3.2.0",
+    "optipng-bin": "^3.1.4"
+  }
+}
